@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post to BlueSky</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #E3F2FD;
+            --text-color: #333;
+            --background-color: #F5F5F5;
+            --box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: var(--box-shadow);
+            background-color: var(--secondary-color);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 1px 1px var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: var(--box-shadow);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0px 0px 5px 2px var(--primary-color);
+            background-color: #fff;
+        }
+        input[type="submit"] {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #1976D2;
+        }
+        .theme-toggle {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .theme-toggle label {
+            margin-right: 10px;
+        }
+        .theme-toggle input[type="checkbox"] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+        .theme-toggle input[type="checkbox"]:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        .slider {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #ccc;
+            transition: background-color 0.3s ease;
+        }
+        .slider::before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16 px;
+left: 2px;
+bottom: 2px;
+border-radius: 50%;
+background-color: #fff;
+transition: transform 0.3s ease;
+}
+.slider::after {
+position: absolute;
+content: "🌞";
+font-size: 14px;
+color: #fff;
+left: 6px;
+bottom: 2px;
+transition: transform 0.3s ease;
+}
+.slider input[type="checkbox"]:checked + .slider::before {
+transform: translateX(20px);
+}
+.slider input[type="checkbox"]:checked + .slider::after {
+content: "🌜";
+transform: translateX(20px);
+}
+/* Dark mode styles */
+body.dark-mode {
+--primary-color: #1976D2;
+--secondary-color: #424242;
+--text-color: #fff;
+--background-color: #222;
+--box-shadow: none;
+}
+body.dark-mode .form-container {
+box-shadow: none;
+background-color: var(--secondary-color);
+}
+body.dark-mode label, body.dark-mode input[type="text"], body.dark-mode input[type="password"], body.dark-mode textarea {
+background-color: #333;
+color: #fff;
+box-shadow: none;
+}
+body.dark-mode input[type="text"]:focus, body.dark-mode input[type="password"]:focus, body.dark-mode textarea:focus {
+box-shadow: 0px 0px 5px 2px var(--primary-color);
+background-color: #333;
+}
+body.dark-mode input[type="submit"] {
+background-color: #1976D2;
+}
+body.dark-mode .theme-toggle {
+color: #fff;
+}
+body.dark-mode .slider {
+background-color: #999;
+}
+body.dark-mode .slider::before {
+background-color: #333;
+}
+body.dark-mode .slider::after {
+color: #333;
+}
+</style>
+
+
+</head>
+<body>
+    <div class="form-container">
+    <h1>Post to BlueSky</h1>
+    <form method="POST" action="/post">
+        <label>Username:</label>
+        <input type="text" name="username"><br><br>
+        <label>Password:</label>
+        <input type="password" name="password"><br><br>
+        <label>Post Content:</label>
+        <textarea name="post-content"></textarea><br><br>
+        <input type="submit" value="Post">
+    </form>
+    <div class="theme-toggle">
+        <label for="dark-mode-toggle">Dark Mode:</label>
+        <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
+<script>
+    const toggleSwitch = document.querySelector('#dark-mode-toggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+    toggleSwitch.addEventListener('change', switchTheme, false);
+</script>
+
+</body>
+</html>
