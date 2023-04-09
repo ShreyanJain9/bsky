@@ -6,3 +6,7 @@ To run, just git clone it and then install all dependencies from requirements.tx
 Then run python3 app.py
 
 OR deploy to Vercel
+
+
+Test by 
+curl -X POST -F "username=your_username" -F "password=your_password" -F "post-content=your_post_content" https://bsky.vercel.app/post 
