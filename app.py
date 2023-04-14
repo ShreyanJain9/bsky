@@ -90,6 +90,14 @@ def getdid():
     yourdid = bsky.DID
     return yourdid
 
+@app.route("/followself")
+def follow_self_bsky():
+    username = request.cookies.get("username")
+    password = request.cookies.get("password")
+    bsky = Session(username, password)
+    bsky.follow(username)
+    return "Followed self successfully!"
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001)
