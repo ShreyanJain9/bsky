@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Settings</h1>
+    <div class="form-container">
+    {% if saved %}
+        <p>Your settings have been saved!</p>
+    {% endif %}
+    
+    <form method="POST" action="/settings">
+        <label>Username:</label>
+        <input type="text" name="username" value="{{ username }}"><br><br>
+        <label>Password:</label>
+        <input type="password" name="password" value="{{ password }}"><br><br>
+        <input type="submit" value="Save Settings">
+    </form>
+    <p><a href="/">Home</a></p>
+    <p><a href="/did">What is my DID?</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+Arguments: 
+  /usr/local/Cellar/node@18/18.14.2/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js add @atproto/api
+
+PATH: 
+  /Users/shreyanjain/.rbenv/shims:/Users/shreyanjain/go/bin:/usr/local/opt/node@18/bin:/usr/local/opt/ruby/bin:/opt/local/sbin:/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/Caskroom/miniconda/base/bin:/usr/local/Caskroom/miniconda/base/condabin:/Users/shreyanjain/.rbenv/shims:/Applications/iTerm.app/Contents/Resources/utilities
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.14.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/shreyanjain/Dev/bsky/node_modules/iso-datestring-validator'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
